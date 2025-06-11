@@ -3,12 +3,12 @@ import hamburger from "../../assets/icons/icon-hamburger.svg";
 import {
   Sheet,
   SheetContent,
-  SheetDescription,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
 } from "../ui/sheet";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
+import { useState } from "react";
 
 const NAVLINKS = [
   { href: "/", label: "Home" },
@@ -18,6 +18,8 @@ const NAVLINKS = [
 ];
 
 export function Navbar() {
+  const [open, setOpen] = useState(false);
+
   return (
     <div className="absolute top-0 left-0 z-20 flex w-full items-center justify-between desktop:pt-500">
       <Link to="/" className="p-300 tablet:px-500 desktop:px-800">
@@ -30,7 +32,7 @@ export function Navbar() {
         </span>
       </Link>
 
-      <Sheet>
+      <Sheet open={open} onOpenChange={setOpen}>
         <SheetTrigger>
           <img
             src={hamburger}
@@ -58,6 +60,9 @@ export function Navbar() {
                         "relative block w-full after:absolute after:right-0 after:bottom-0 after:h-full after:w-[3px] after:transition-all after:duration-600",
                       ].join(" ")
                     }
+                    onClick={() => {
+                      setOpen(false);
+                    }}
                   >
                     <span className="text-preset-8-bold-desktop">
                       0{NAVLINKS.indexOf(link)}
