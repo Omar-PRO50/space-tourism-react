@@ -1,7 +1,159 @@
+import moon from "../assets/destination/image-moon.webp";
+import mars from "../assets/destination/image-mars.webp";
+import europa from "../assets/destination/image-europa.webp";
+import titan from "../assets/destination/image-titan.webp";
+import { useState, type ReactNode } from "react";
+import { destinations } from "../assets/data.json";
+import { AnimatePresence, motion } from "framer-motion";
+
+type Destination = {
+  name: string;
+  images: {
+    webp: string;
+  };
+  description: string;
+  distance: string;
+  travel: string;
+};
+
+function updateDestinations(oldDes: Destination[]): Destination[] {
+  const newDes = oldDes.map((dest) => {
+    switch (dest.name.toLowerCase()) {
+      case "moon":
+        return { ...dest, images: { webp: moon } };
+      case "mars":
+        return { ...dest, images: { webp: mars } };
+      case "europa":
+        return { ...dest, images: { webp: europa } };
+      case "titan":
+        return { ...dest, images: { webp: titan } };
+      default:
+        return dest;
+    }
+  });
+  return newDes;
+}
+
 export default function Destination() {
+  const [updatedDestinations, setUpdatedDestinations] = useState<Destination[]>(
+    updateDestinations(destinations),
+  );
+  const [selectedDestination, setSelectedDestination] = useState<Destination>(
+    updatedDestinations[0],
+  );
+
   return (
-    <div className="h-lvh bg-(image:--bg-destination-mobile) bg-cover bg-center bg-no-repeat pt-[calc(var(--spacing-navbar-mobile)+var(--spacing-300))] text-white tablet:bg-(image:--bg-destination-tablet) tablet:pt-[calc(var(--spacing-navbar-tablet)+var(--spacing-1600))] desktop:bg-(image:--bg-destination-desktop) desktop:pt-[calc(var(--spacing-navbar-desktop)+var(--spacing-1600))]">
-      destination
+    <div className="h-lvh bg-(image:--bg-destination-mobile) bg-cover bg-center bg-no-repeat p-300 pt-[calc(var(--spacing-navbar-mobile)+var(--spacing-300))] text-white tablet:bg-(image:--bg-destination-tablet) tablet:p-500 tablet:pt-[calc(var(--spacing-navbar-tablet)+var(--spacing-500))] desktop:bg-(image:--bg-destination-desktop) desktop:pt-[calc(var(--spacing-navbar-desktop)+var(--spacing-600))]">
+      <div className="mx-auto flex h-full flex-col items-center gap-300 desktop:max-w-277.5">
+        <h2 className="flex gap-300 text-preset-6-mobile text-white uppercase tablet:self-start tablet:text-preset-5-tablet desktop:text-preset-5-desktop">
+          <span className="font-bold tracking-[4.7px] opacity-25">01</span>
+          <span className=" ">Pick your distination</span>
+        </h2>
+        <div className="flex w-full grow flex-col items-center gap-400 desktop:flex-row">
+          <div className="relative w-full flex-1">
+            <AnimatePresence>
+              <motion.img
+                key={selectedDestination.name}
+                src={selectedDestination.images.webp}
+                alt={selectedDestination.name}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.6 }}
+                className="absolute top-1/2 left-1/2 w-[150px] -translate-1/2 tablet:w-[300px] desktop:w-120"
+              />
+            </AnimatePresence>
+          </div>
+          <div className="flex flex-1 desktop:justify-center">
+            <div className="flex max-w-lg flex-col gap-300 text-center desktop:max-w-md desktop:items-start desktop:gap-500 desktop:text-left">
+              <div className="flex gap-400 self-center text-preset-8-mobile text-blue-300 tablet:text-preset-8-desktop desktop:self-start">
+                {updatedDestinations.map(({ name }) => (
+                  <button
+                    onClick={() => {
+                      setSelectedDestination(
+                        updatedDestinations.find(
+                          (dest) => dest.name === name,
+                        ) || updatedDestinations[0],
+                      );
+                    }}
+                    key={name}
+                    className={`nav-underline flex h-400 cursor-pointer items-start uppercase transition-all hover:text-white [&.active]:text-white ${selectedDestination.name === name ? "active" : ""}`}
+                  >
+                    {name}
+                  </button>
+                ))}
+              </div>
+              <div className="flex flex-col gap-200">
+                <h3 className="relative text-preset-2-mobile uppercase tablet:text-preset-2-tablet desktop:text-preset-2-desktop">
+                  <span className="invisible">Moon</span>
+                  <Anim animationkey={selectedDestination.name}>
+                    {selectedDestination.name}
+                  </Anim>
+                </h3>
+                <p className="relative text-preset-9-mobile text-blue-300 tablet:text-preset-9-tablet desktop:text-preset-9-desktop">
+                  <span className="invisible">
+                    See our planet as you’ve never seen it before. A perfect
+                    relaxing trip away to help regain perspective and come back
+                    refreshed. While you’re there, take in some history by
+                    visiting the Luna 2 and Apollo 11 landing sites.
+                  </span>
+                  <Anim animationkey={selectedDestination.name}>
+                    {selectedDestination.description}
+                  </Anim>
+                </p>
+              </div>
+              <hr className="w-full opacity-25" />
+              <div className="flex flex-col gap-300 uppercase tablet:flex-row">
+                <div className="flex flex-col gap-100 tablet:grow">
+                  <div className="text-preset-7-desktop text-blue-300">
+                    AVG. DISTANCE
+                  </div>
+                  <div className="relative text-preset-6-desktop">
+                    <span className="invisible">384,400 km</span>
+                    <Anim animationkey={selectedDestination.name}>
+                      {selectedDestination.distance}
+                    </Anim>
+                  </div>
+                </div>
+                <div className="flex flex-col gap-100 tablet:grow">
+                  <div className="relative text-preset-7-desktop text-blue-300">
+                    Est. travel time
+                  </div>
+                  <div className="relative text-preset-6-desktop">
+                    <span className="invisible">3 Days</span>
+                    <Anim animationkey={selectedDestination.name}>
+                      {selectedDestination.travel}
+                    </Anim>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  );
+}
+
+function Anim({
+  children,
+  animationkey,
+}: {
+  children: ReactNode;
+  animationkey: string;
+}) {
+  return (
+    <AnimatePresence>
+      <motion.span
+        key={animationkey}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.6 }}
+        className="absolute top-0 left-1/2 w-full -translate-x-1/2"
+      >
+        {children}
+      </motion.span>
+    </AnimatePresence>
   );
 }

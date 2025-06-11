@@ -80,10 +80,8 @@ export function Navbar() {
                 to={link.href}
                 className={({ isActive }) => {
                   return [
-                    isActive
-                      ? "active after:bg-white"
-                      : "hover:after:bg-white/50",
-                    "group relative flex h-full items-center after:absolute after:bottom-0 after:left-0 after:h-[3px] after:w-full after:transition-all after:duration-600",
+                    isActive ? "active" : "",
+                    "group transtional nav-underline flex h-full items-center",
                   ].join(" ");
                 }}
               >

@@ -80,12 +80,13 @@
   --bg-technology-mobile: url("./assets/technology/background-technology-mobile.jpg");
   --bg-technology-tablet: url("./assets/technology/background-technology-tablet.jpg");
   --bg-technology-desktop: url("./assets/technology/background-technology-desktop.jpg");
-}
 
-:root {
   --font-bellefair: "Bellefair", serif;
   --font-barlow: "Barlow", sans-serif;
   --font-barlow-condensed: "Barlow Condensed", sans-serif;
+}
+
+:root {
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
@@ -240,7 +241,7 @@
 }
 
 @utility text-preset-6-desktop {
-  font-family: var(--font-barlow-condensed);
+  font-family: var(--font-bellefair);
   font-size: 1.75rem;
   line-height: normal;
   letter-spacing: normal;
@@ -273,6 +274,31 @@
   font-size: 1.125rem;
   line-height: 180%;
   letter-spacing: normal;
+}
+
+@utility nav-underline {
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    width: 100%;
+    transition: all
+      var(
+        --tw-ease,
+        var(--default-transition-timing-function)
+          /* cubic-bezier(0.4, 0, 0.2, 1) */
+      )
+      600ms;
+  }
+  &.active::after {
+    background-color: white;
+  }
+  &:not(.active):hover::after {
+    background-color: rgba(255, 255, 255, 0.5);
+  }
 }
 
 @theme inline {

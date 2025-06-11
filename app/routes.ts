@@ -4,4 +4,5 @@ import path from "path";
 export default [
   index("routes/home.tsx"),
   route("destination", "routes/destination.tsx"),
+  route("crew", "routes/crew.tsx"),
 ] satisfies RouteConfig;
