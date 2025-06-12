@@ -51,7 +51,7 @@ export default function Destination() {
       <div className="flex grow flex-col items-center gap-300 desktop:max-w-277.5">
         <h2 className="flex gap-300 text-preset-6-mobile text-white uppercase tablet:self-start tablet:text-preset-5-tablet desktop:text-preset-5-desktop">
           <span className="font-bold tracking-[4.7px] opacity-25">01</span>
-          <span className=" ">Pick your distination</span>
+          <span>Pick your distination</span>
         </h2>
         <div className="flex w-full grow flex-col items-center gap-400 desktop:flex-row">
           <div className="relative w-full flex-1">
@@ -82,17 +82,14 @@ export default function Destination() {
               </div>
               <div className="flex flex-col gap-200">
                 <h3 className="relative text-preset-2-mobile uppercase tablet:text-preset-2-tablet desktop:text-preset-2-desktop">
-                  <span className="invisible">Moon</span>
+                  <span className="invisible">{selectedDestination.name}</span>
                   <TextFadeAnimation animationkey={selectedDestination.name}>
                     {selectedDestination.name}
                   </TextFadeAnimation>
                 </h3>
                 <p className="relative text-preset-9-mobile text-blue-300 tablet:text-preset-9-tablet desktop:text-preset-9-desktop">
                   <span className="invisible">
-                    See our planet as you’ve never seen it before. A perfect
-                    relaxing trip away to help regain perspective and come back
-                    refreshed. While you’re there, take in some history by
-                    visiting the Luna 2 and Apollo 11 landing sites.
+                    {selectedDestination.description}
                   </span>
                   <TextFadeAnimation animationkey={selectedDestination.name}>
                     {selectedDestination.description}
@@ -106,7 +103,10 @@ export default function Destination() {
                     AVG. DISTANCE
                   </div>
                   <div className="relative text-preset-6-desktop">
-                    <span className="invisible">384,400 km</span>
+                    <span className="invisible">
+                      {" "}
+                      {selectedDestination.distance}
+                    </span>
                     <TextFadeAnimation animationkey={selectedDestination.name}>
                       {selectedDestination.distance}
                     </TextFadeAnimation>
@@ -117,7 +117,9 @@ export default function Destination() {
                     Est. travel time
                   </div>
                   <div className="relative text-preset-6-desktop">
-                    <span className="invisible">3 Days</span>
+                    <span className="invisible">
+                      {selectedDestination.travel}
+                    </span>
                     <TextFadeAnimation animationkey={selectedDestination.name}>
                       {selectedDestination.travel}
                     </TextFadeAnimation>
