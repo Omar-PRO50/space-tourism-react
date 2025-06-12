@@ -1,87 +1,36 @@
-# Welcome to React Router!
+🚀 Space Tourism Website
 
-A modern, production-ready template for building full-stack React applications using React Router.
+A fully responsive, animated multi-page space tourism website built using React Router v7, Tailwind CSS, and Framer Motion. This project showcases seamless page transitions, dynamic routing, and a sleek, modern UI inspired by futuristic travel experiences.
+✨ Features
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
+    ⚛️ React Router v7 for client-side routing
 
-## Features
+    🎨 Tailwind CSS for utility-first styling
 
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
+    🎞️ Framer Motion for smooth animations
 
-## Getting Started
+    🌙 Fully responsive design (mobile, tablet, desktop)
 
-### Installation
+    🛰️ Pages: Home, Destination, Crew, Technology
 
-Install the dependencies:
+📦 Tech Stack
 
-```bash
-npm install
-```
+    React
 
-### Development
+    React Router v7
 
-Start the development server with HMR:
+    Tailwind CSS
 
-```bash
-npm run dev
-```
+    Framer Motion
 
-Your application will be available at `http://localhost:5173`.
+🔧 Setup
 
-## Building for Production
+    Clone the repo
 
-Create a production build:
+    npm install
 
-```bash
-npm run build
-```
+    npm run dev
 
-## Deployment
+🎯 Inspiration
 
-### Docker Deployment
-
-To build and run using Docker:
-
-```bash
-docker build -t my-app .
-
-# Run the container
-docker run -p 3000:3000 my-app
-```
-
-The containerized application can be deployed to any platform that supports Docker, including:
-
-- AWS ECS
-- Google Cloud Run
-- Azure Container Apps
-- Digital Ocean App Platform
-- Fly.io
-- Railway
-
-### DIY Deployment
-
-If you're familiar with deploying Node applications, the built-in app server is production-ready.
-
-Make sure to deploy the output of `npm run build`
-
-```
-├── package.json
-├── package-lock.json (or pnpm-lock.yaml, or bun.lockb)
-├── build/
-│   ├── client/    # Static assets
-│   └── server/    # Server-side code
-```
-
-## Styling
-
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
-
----
-
-Built with ❤️ using React Router.
+Based on the Frontend Mentor Space Tourism challenge.
