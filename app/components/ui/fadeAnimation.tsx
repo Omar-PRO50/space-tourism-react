@@ -16,7 +16,7 @@ export function ImgFadeAnimation({
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    setIsLoaded(Boolean(imgRef) || Boolean(imgRef.current?.complete));
+    setIsLoaded(false);
   }, [src]);
 
   return (
@@ -28,6 +28,9 @@ export function ImgFadeAnimation({
       )}
       <AnimatePresence>
         <motion.img
+          onLoad={() => {
+            setIsLoaded(true);
+          }}
           key={name}
           src={src}
           ref={imgRef}
