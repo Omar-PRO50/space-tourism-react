@@ -1,9 +1,3 @@
-import type { Route } from "./+types/home";
-
-export function meta({}: Route.MetaArgs) {
-  return [];
-}
-
 export default function Home() {
   return (
     <div className="flex min-h-lvh justify-center bg-(image:--bg-home-mobile) bg-cover bg-center bg-no-repeat p-300 pt-[calc(var(--spacing-navbar-mobile)+var(--spacing-300))] tablet:bg-(image:--bg-home-tablet) tablet:px-500 tablet:pt-[calc(var(--spacing-navbar-tablet)+var(--spacing-1600))] tablet:pb-1600 desktop:items-end desktop:bg-(image:--bg-home-desktop) desktop:pt-[calc(var(--spacing-navbar-desktop)+var(--spacing-1600))]">

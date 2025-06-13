@@ -121,6 +121,10 @@
   --sidebar-ring: oklch(0.708 0 0);
 }
 
+body {
+  background-color: var(--color-blue-900);
+}
+
 @utility text-preset-1-mobile {
   font-family: var(--font-bellefair);
   font-size: 5rem;

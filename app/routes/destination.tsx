@@ -2,9 +2,8 @@ import moon from "../assets/destination/image-moon.webp";
 import mars from "../assets/destination/image-mars.webp";
 import europa from "../assets/destination/image-europa.webp";
 import titan from "../assets/destination/image-titan.webp";
-import { useState, type ReactNode } from "react";
+import { useState } from "react";
 import { destinations } from "../assets/data.json";
-import { AnimatePresence, motion } from "framer-motion";
 import {
   ImgFadeAnimation,
   TextFadeAnimation,

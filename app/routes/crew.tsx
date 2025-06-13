@@ -3,8 +3,7 @@ import douglas from "../assets/crew/image-douglas-hurley.webp";
 import mark from "../assets/crew/image-mark-shuttleworth.webp";
 import victor from "../assets/crew/image-victor-glover.webp";
 import anousheh from "../assets/crew/image-anousheh-ansari.webp";
-import { useState, type ReactNode } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { useState } from "react";
 import {
   ImgFadeAnimation,
   TextFadeAnimation,
