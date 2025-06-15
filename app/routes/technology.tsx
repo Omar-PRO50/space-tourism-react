@@ -9,7 +9,7 @@ import { useState } from "react";
 import {
   ImgFadeAnimation,
   TextFadeAnimation,
-} from "~/components/ui/fadeAnimation";
+} from "~/components/animation/fadeAnimation";
 
 type Technology = {
   name: string;
@@ -62,7 +62,7 @@ export default function Technology() {
   const [selectedTech, setSelectedTech] = useState<Technology>(updatedTech[0]);
 
   return (
-    <div className="flex min-h-lvh overflow-hidden bg-(image:--bg-technology-mobile) bg-cover bg-center bg-no-repeat px-300 pt-[calc(var(--spacing-navbar-mobile)+var(--spacing-300))] pb-600 text-white tablet:bg-(image:--bg-technology-tablet) tablet:p-500 tablet:pt-[calc(var(--spacing-navbar-tablet)+var(--spacing-500))] desktop:bg-(image:--bg-technology-desktop) desktop:px-0 desktop:pt-[calc(var(--spacing-navbar-desktop)+var(--spacing-600))] desktop:pb-600 desktop:pl-40">
+    <div className="flex min-h-lvh overflow-hidden bg-(image:--bg-technology-mobile) bg-cover bg-center bg-no-repeat px-300 pt-[calc(var(--spacing-navbar-height-mobile)+var(--spacing-300))] pb-600 text-white tablet:bg-(image:--bg-technology-tablet) tablet:p-500 tablet:pt-[calc(var(--spacing-navbar-height-tablet)+var(--spacing-500))] desktop:bg-(image:--bg-technology-desktop) desktop:px-0 desktop:pt-[calc(var(--spacing-navbar-height-desktop)+var(--spacing-600))] desktop:pb-600 desktop:pl-40">
       <div className="flex grow flex-col items-center gap-300 desktop:max-w-7xl desktop:items-start">
         <h2 className="flex gap-300 text-preset-6-mobile text-white uppercase tablet:self-start tablet:text-preset-5-tablet desktop:text-preset-5-desktop">
           <span className="font-bold tracking-[4.7px] opacity-25">03</span>

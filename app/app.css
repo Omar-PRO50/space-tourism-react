@@ -61,9 +61,9 @@
   --spacing-50: 0.25rem;
   --spacing-25: 0.125rem;
 
-  --spacing-navbar-mobile: 5.5rem;
-  --spacing-navbar-tablet: 6rem;
-  --spacing-navbar-desktop: 8.5rem;
+  --spacing-navbar-height-mobile: 5.5rem;
+  --spacing-navbar-height-tablet: 6rem;
+  --spacing-navbar-height-desktop: 8.5rem;
 
   --bg-home-mobile: url("./assets/home/background-home-mobile.jpg");
   --bg-home-tablet: url("./assets/home/background-home-tablet.jpg");

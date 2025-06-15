@@ -7,7 +7,7 @@ import { destinations } from "../assets/data.json";
 import {
   ImgFadeAnimation,
   TextFadeAnimation,
-} from "~/components/ui/fadeAnimation";
+} from "~/components/animation/fadeAnimation";
 
 type Destination = {
   name: string;
@@ -46,12 +46,12 @@ export default function Destination() {
   );
 
   return (
-    <div className="flex min-h-lvh justify-center bg-(image:--bg-destination-mobile) bg-cover bg-center bg-no-repeat p-300 pt-[calc(var(--spacing-navbar-mobile)+var(--spacing-300))] text-white tablet:bg-(image:--bg-destination-tablet) tablet:p-500 tablet:pt-[calc(var(--spacing-navbar-tablet)+var(--spacing-500))] desktop:bg-(image:--bg-destination-desktop) desktop:pt-[calc(var(--spacing-navbar-desktop)+var(--spacing-600))]">
+    <div className="flex min-h-lvh justify-center bg-(image:--bg-destination-mobile) bg-cover bg-center bg-no-repeat p-300 pt-[calc(var(--spacing-navbar-height-mobile)+var(--spacing-300))] text-white tablet:bg-(image:--bg-destination-tablet) tablet:p-500 tablet:pt-[calc(var(--spacing-navbar-height-tablet)+var(--spacing-500))] desktop:bg-(image:--bg-destination-desktop) desktop:pt-[calc(var(--spacing-navbar-height-desktop)+var(--spacing-600))]">
       <div className="flex grow flex-col items-center gap-300 desktop:max-w-277.5">
-        <h2 className="flex gap-300 text-preset-6-mobile text-white uppercase tablet:self-start tablet:text-preset-5-tablet desktop:text-preset-5-desktop">
+        <h1 className="flex gap-300 text-preset-6-mobile text-white uppercase tablet:self-start tablet:text-preset-5-tablet desktop:text-preset-5-desktop">
           <span className="font-bold tracking-[4.7px] opacity-25">01</span>
           <span>Pick your distination</span>
-        </h2>
+        </h1>
         <div className="flex w-full grow flex-col items-center gap-400 desktop:flex-row">
           <div className="relative w-full flex-1">
             <ImgFadeAnimation
@@ -62,9 +62,15 @@ export default function Destination() {
           </div>
           <div className="flex flex-1 desktop:justify-center">
             <div className="flex max-w-lg flex-col gap-300 text-center desktop:max-w-md desktop:items-start desktop:gap-500 desktop:text-left">
-              <div className="flex gap-400 self-center text-preset-8-mobile text-blue-300 tablet:text-preset-8-desktop desktop:self-start">
+              <div
+                role="group"
+                aria-label="Destination selector"
+                className="flex gap-400 self-center text-preset-8-mobile text-blue-300 tablet:text-preset-8-desktop desktop:self-start"
+              >
                 {updatedDestinations.map(({ name }) => (
                   <button
+                    aria-label={`Show ${name}`}
+                    aria-selected={selectedDestination.name === name}
                     onClick={() => {
                       setSelectedDestination(
                         updatedDestinations.find(
@@ -80,14 +86,16 @@ export default function Destination() {
                 ))}
               </div>
               <div className="flex flex-col gap-200">
-                <h3 className="relative text-preset-2-mobile uppercase tablet:text-preset-2-tablet desktop:text-preset-2-desktop">
-                  <span className="invisible">{selectedDestination.name}</span>
+                <h2 className="relative text-preset-2-mobile uppercase tablet:text-preset-2-tablet desktop:text-preset-2-desktop">
+                  <span aria-hidden="true" className="invisible">
+                    {selectedDestination.name}
+                  </span>
                   <TextFadeAnimation animationkey={selectedDestination.name}>
                     {selectedDestination.name}
                   </TextFadeAnimation>
-                </h3>
+                </h2>
                 <p className="relative text-preset-9-mobile text-blue-300 tablet:text-preset-9-tablet desktop:text-preset-9-desktop">
-                  <span className="invisible">
+                  <span aria-hidden="true" className="invisible">
                     {selectedDestination.description}
                   </span>
                   <TextFadeAnimation animationkey={selectedDestination.name}>
@@ -96,35 +104,43 @@ export default function Destination() {
                 </p>
               </div>
               <hr className="w-full opacity-25" />
-              <div className="flex flex-col gap-300 uppercase tablet:flex-row">
-                <div className="flex flex-col gap-100 tablet:grow">
-                  <div className="text-preset-7-desktop text-blue-300">
-                    AVG. DISTANCE
+              <dl className="flex flex-col gap-300 uppercase tablet:flex-row">
+                {[
+                  {
+                    title: "AVG. DISTANCE",
+                    label: "avg-distance-label",
+                    description: selectedDestination.distance,
+                  },
+                  {
+                    title: "Est. travel time",
+                    label: "est-travel-time-label",
+                    description: selectedDestination.travel,
+                  },
+                ].map(({ title, label, description }) => (
+                  <div
+                    key={label}
+                    className="flex flex-col gap-100 tablet:grow"
+                  >
+                    <dt className="text-preset-7-desktop text-blue-300">
+                      {title}
+                    </dt>
+                    <dd
+                      className="relative text-preset-6-desktop"
+                      aria-live="polite"
+                      aria-atomic="true"
+                    >
+                      <span aria-hidden="true" className="invisible">
+                        {description}
+                      </span>
+                      <TextFadeAnimation
+                        animationkey={selectedDestination.name}
+                      >
+                        {description}
+                      </TextFadeAnimation>
+                    </dd>
                   </div>
-                  <div className="relative text-preset-6-desktop">
-                    <span className="invisible">
-                      {" "}
-                      {selectedDestination.distance}
-                    </span>
-                    <TextFadeAnimation animationkey={selectedDestination.name}>
-                      {selectedDestination.distance}
-                    </TextFadeAnimation>
-                  </div>
-                </div>
-                <div className="flex flex-col gap-100 tablet:grow">
-                  <div className="relative text-preset-7-desktop text-blue-300">
-                    Est. travel time
-                  </div>
-                  <div className="relative text-preset-6-desktop">
-                    <span className="invisible">
-                      {selectedDestination.travel}
-                    </span>
-                    <TextFadeAnimation animationkey={selectedDestination.name}>
-                      {selectedDestination.travel}
-                    </TextFadeAnimation>
-                  </div>
-                </div>
-              </div>
+                ))}
+              </dl>
             </div>
           </div>
         </div>

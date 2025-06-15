@@ -1,6 +1,6 @@
 export default function Home() {
   return (
-    <div className="flex min-h-lvh justify-center bg-(image:--bg-home-mobile) bg-cover bg-center bg-no-repeat p-300 pt-[calc(var(--spacing-navbar-mobile)+var(--spacing-300))] tablet:bg-(image:--bg-home-tablet) tablet:px-500 tablet:pt-[calc(var(--spacing-navbar-tablet)+var(--spacing-1600))] tablet:pb-1600 desktop:items-end desktop:bg-(image:--bg-home-desktop) desktop:pt-[calc(var(--spacing-navbar-desktop)+var(--spacing-1600))]">
+    <div className="flex min-h-lvh justify-center bg-(image:--bg-home-mobile) bg-cover bg-center bg-no-repeat p-300 pt-[calc(var(--spacing-navbar-height-mobile)+var(--spacing-300))] tablet:bg-(image:--bg-home-tablet) tablet:px-500 tablet:pt-[calc(var(--spacing-navbar-height-tablet)+var(--spacing-1600))] tablet:pb-1600 desktop:items-end desktop:bg-(image:--bg-home-desktop) desktop:pt-[calc(var(--spacing-navbar-height-desktop)+var(--spacing-1600))]">
       <div className="flex w-full max-w-277.5 grow flex-col items-center gap-200 desktop:flex-row desktop:justify-between">
         <div className="flex max-w-135 flex-col gap-300 text-center desktop:text-left">
           <h1 className="flex flex-col gap-300 uppercase">

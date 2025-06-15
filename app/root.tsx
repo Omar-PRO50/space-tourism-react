@@ -1,5 +1,6 @@
 import {
   isRouteErrorResponse,
+  Link,
   Links,
   Meta,
   Outlet,
@@ -9,8 +10,7 @@ import {
 
 import type { Route } from "./+types/root";
 import "./app.css";
-import { Navbar } from "./components/navbar/navbar";
-import { Error as ErrorPage } from "./components/ui/error";
+import { Navbar } from "./components/ui/navbar";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -33,6 +33,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.svg" />
         <title>Space Tourism</title>
+        <meta name="keywords" content="space, toursim, moon, technologies" />
+        <meta
+          name="description"
+          content="Space-tourism is responsive multi-page website made using react router v7, tailwind, framer motion"
+        />
+
         <Meta />
         <Links />
       </head>
@@ -71,12 +77,24 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   }
 
   return (
-    <ErrorPage title={message} description={details}>
-      {stack && (
-        <pre className="w-full overflow-x-auto p-4">
-          <code>{stack}</code>
-        </pre>
-      )}
-    </ErrorPage>
+    <main className="flex min-h-lvh flex-col items-center justify-center gap-7 text-center text-white">
+      <div className="flex flex-col items-center gap-5">
+        <h1 className="text-preset-2-mobile">{message}</h1>
+        <p className="text-preset-4-desktop">{details}</p>
+      </div>
+      <div>
+        {stack && (
+          <pre className="w-full overflow-x-auto p-4">
+            <code>{stack}</code>
+          </pre>
+        )}
+      </div>
+      <Link
+        to="/"
+        className="nav-underline h-8 text-preset-3-mobile text-blue-300 uppercase transition-all duration-600 after:h-[1px] hover:text-white"
+      >
+        Go back Home
+      </Link>
+    </main>
   );
 }

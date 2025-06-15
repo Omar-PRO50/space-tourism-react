@@ -6,7 +6,7 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "../ui/sheet";
+} from "./sheet";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import { useState } from "react";
 
@@ -21,8 +21,8 @@ export function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="absolute top-0 left-0 z-20 flex w-full items-center justify-between desktop:pt-500">
-      <Link to="/" className="p-300 tablet:px-500 desktop:px-800">
+    <div className="absolute inset-x-0 z-20 flex items-center justify-between gap-300 p-300 tablet:gap-0 tablet:p-0">
+      <Link to="/" className="tablet:px-500 tablet:py-300 desktop:px-800">
         <span className="relative block after:absolute after:top-1/2 after:left-[calc(100%+var(--spacing-800))] after:z-10 after:hidden after:h-[1px] after:w-[calc(50vw-100%-2*var(--spacing-800)+var(--spacing-200))] after:bg-white after:opacity-25 desktop:after:block">
           <img
             src="/favicon.svg"
@@ -32,12 +32,13 @@ export function Navbar() {
         </span>
       </Link>
 
+      {/*Mobile Navbar*/}
       <Sheet open={open} onOpenChange={setOpen}>
-        <SheetTrigger>
+        <SheetTrigger aria-label="open navigation menu">
           <img
             src={hamburger}
             alt="Hamburger icon"
-            className="cursor-pointer p-300 tablet:hidden"
+            className="cursor-pointer tablet:hidden"
           />
         </SheetTrigger>
         <SheetContent className="w-3xs gap-300 bg-blue-900/70 pl-400 backdrop-blur-[80px] tablet:hidden">
@@ -46,8 +47,8 @@ export function Navbar() {
               <VisuallyHidden>Navigation Links</VisuallyHidden>
             </SheetTitle>
           </SheetHeader>
-          <nav className="h-full text-preset-8-desktop text-white uppercase">
-            <ul className="flex h-full flex-col gap-400">
+          <nav className="text-preset-8-desktop text-white uppercase">
+            <ul className="flex flex-col gap-400">
               {NAVLINKS.map((link) => (
                 <li key={link.href}>
                   <NavLink
@@ -57,7 +58,7 @@ export function Navbar() {
                         isActive
                           ? "active after:bg-white"
                           : "hover:after:bg-white/50",
-                        "relative block w-full after:absolute after:right-0 after:bottom-0 after:h-full after:w-[3px] after:transition-all after:duration-600",
+                        "relative block w-full after:absolute after:inset-y-0 after:right-0 after:w-[3px] after:transition-all after:duration-600",
                       ].join(" ")
                     }
                     onClick={() => {
@@ -77,7 +78,8 @@ export function Navbar() {
         </SheetContent>
       </Sheet>
 
-      <nav className="hidden h-1200 justify-end bg-white/5 px-500 text-preset-8-desktop text-white uppercase backdrop-blur-[80px] tablet:flex tablet:grow-1 desktop:w-[calc(50%+var(--spacing-200))] desktop:grow-0 desktop:px-800">
+      {/*Tablet and Desktop Navbar*/}
+      <nav className="hidden h-navbar-height-tablet grow-1 justify-end bg-white/5 pr-500 text-preset-8-desktop text-white uppercase backdrop-blur-[80px] tablet:flex desktop:w-[calc(50%+var(--spacing-200))] desktop:grow-0 desktop:px-800">
         <ul className="flex gap-600">
           {NAVLINKS.map((link) => (
             <li key={link.href} className="h-full">
