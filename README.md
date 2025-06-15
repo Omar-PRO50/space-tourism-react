@@ -1,6 +1,7 @@
 🚀 Space Tourism Website
 
-A fully responsive, animated multi-page space tourism website built using React Router v7, Tailwind CSS, and Framer Motion. This project showcases seamless page transitions, dynamic routing, and a sleek, modern UI inspired by futuristic travel experiences.
+A fully static, responsive space tourism website built with React Router v7, Tailwind CSS, and Framer Motion. Every page is prerendered for fast loading, with animated image transitions, a loading indicator, and a modern, accessible UI designed for an immersive user experience.
+
 ✨ Features
 
     ⚛️ React Router v7 for client-side routing
