@@ -5,5 +5,4 @@ export default [
   route("destination", "routes/destination.tsx"),
   route("crew", "routes/crew.tsx"),
   route("technology", "routes/technology.tsx"),
-  route("*", "routes/404.tsx"),
 ] satisfies RouteConfig;

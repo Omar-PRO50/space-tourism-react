@@ -13,10 +13,10 @@ export function ImgFadeAnimation({
   src: string;
 }) {
   const imgRef = useRef<HTMLImageElement>(null);
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(Boolean(imgRef.current?.complete));
 
   useEffect(() => {
-    setIsLoaded(false);
+    setIsLoaded(Boolean(imgRef.current?.complete));
   }, [src]);
 
   return (
